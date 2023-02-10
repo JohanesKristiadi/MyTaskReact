@@ -2,20 +2,24 @@ import React from "react";
 import Button from "./Button"
 import propTypes from "prop-types"
 
-const TodoItem = props =>{
+const TodoItem = ({todo, del})=>{
+    const delById = id =>{
+        del(id)
+    }
     return(
         <div style={todoItem}>
-            <p>{props.todo.title}</p>
+            <p>{todo.title}</p>
             <div>
-                <Button text="edit" variant = "success"/>
-                <Button text="delete" variant= "warning"/>
+                <Button text="edit" variant = "success" />
+                <Button text="delete" variant= "warning" action ={() => delById(todo.id)}/>
             </div>
         </div>
     )
 }
 
 TodoItem.propTypes = {
-    todo : propTypes.object.isRequired
+    todo : propTypes.object.isRequired,
+    del: propTypes.func.isRequired
 }
 export default TodoItem;
 

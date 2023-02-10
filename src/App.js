@@ -17,6 +17,11 @@ class App extends React.Component {
       }
     ]
   }
+  DeleteTask = id =>{
+    this.setState({
+      todos :this.state.todos.filter(item => item.id != id)
+    })
+  }
   render() {
     const { todos } = this.state;
     return (
@@ -27,7 +32,7 @@ class App extends React.Component {
         </div>
         <div className='list'>
           {todos.map(item =>
-            <TodoItem key = {item.id} todo = {item}/>
+            <TodoItem key = {item.id} todo = {item} del = {this.DeleteTask}/>
           )}
 
         </div>
