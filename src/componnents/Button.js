@@ -1,11 +1,17 @@
 import React from "react";
 import "../styles/Button.css"
-const Button = props => {
+import PropTypes from "prop-types"
+
+const Button = ({variant, text}) => {
     return (
-        <button className= {`btn btn-${props.variant}`}>
-            {props.text}
+        <button className= {`btn btn-${variant}`}>
+            {text}
         </button>
     )
 }
 
+Button.propTypes = {
+    text :PropTypes.string.isRequired,
+    variant : PropTypes.string.isRequired
+}
 export default Button
