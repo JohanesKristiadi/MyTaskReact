@@ -3,6 +3,7 @@ import React from 'react';
 import FormInput from './componnents/FormInput';
 import TodoItem from './componnents/TodoItem';
 import './App.css';
+import EditModal from './componnents/EditModal';
 
 class App extends React.Component {
   state = {
@@ -19,7 +20,7 @@ class App extends React.Component {
   }
   DeleteTask = id =>{
     this.setState({
-      todos :this.state.todos.filter(item => item.id != id)
+      todos :this.state.todos.filter(item => item.id !== id)
     })
   }
   addTask =data =>{
@@ -49,8 +50,7 @@ class App extends React.Component {
         <div className='input-form'>
           <FormInput add = {this.addTask}/>
         </div>
-
-
+        <EditModal/>
       </div>
     );
 
