@@ -17,12 +17,29 @@ class App extends React.Component {
         title: "Workout training",
       }
     ],
-    isEdit: false
+    isEdit: false,
+    editData:{
+      id:"",
+      title :""
+    }
   }
 
-  openModal = () =>{
+  setTitle = e =>{
     this.setState({
-      isEdit :true
+      editData:{
+        ...this.state.editData,
+        title : e.target.value
+      }
+    })
+  }
+
+  openModal = (id, data) =>{
+    this.setState({
+      isEdit :true,
+      editData :{
+        id,
+        title : data,
+      }
     })
   }
 
@@ -69,7 +86,7 @@ class App extends React.Component {
         <div className='input-form'>
           <FormInput add = {this.addTask}/>
         </div>
-        <EditModal edit = {this.state.isEdit} close={this.closeModal}/>
+        <EditModal edit = {this.state.isEdit} close={this.closeModal} change ={this.setTitle} data ={this.state.editData}/>
       </div>
     );
 
