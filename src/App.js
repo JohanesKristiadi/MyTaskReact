@@ -16,8 +16,22 @@ class App extends React.Component {
         id: 2,
         title: "Workout training",
       }
-    ]
+    ],
+    isEdit: false
   }
+
+  openModal = () =>{
+    this.setState({
+      isEdit :true
+    })
+  }
+
+  closeModal = () =>{
+    this.setState({
+      isEdit :false
+    })
+  }
+
   DeleteTask = id =>{
     this.setState({
       todos :this.state.todos.filter(item => item.id !== id)
@@ -43,14 +57,19 @@ class App extends React.Component {
         </div>
         <div className='list'>
           {todos.map(item =>
-            <TodoItem key = {item.id} todo = {item} del = {this.DeleteTask}/>
+            <TodoItem 
+            key = {item.id} 
+            todo = {item}
+            del = {this.DeleteTask}
+            open = {this.openModal}
+            />
           )}
 
         </div>
         <div className='input-form'>
           <FormInput add = {this.addTask}/>
         </div>
-        <EditModal/>
+        <EditModal edit = {this.state.isEdit} close={this.closeModal}/>
       </div>
     );
 

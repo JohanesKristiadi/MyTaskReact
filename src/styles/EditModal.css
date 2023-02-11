@@ -17,6 +17,9 @@
     text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation-name: show;
+    animation-duration: 8.6s;
+
 }
 
 .modal-box h3{
@@ -32,4 +35,14 @@
 
 .modal-box .input input{
     width: 80%;
+}
+
+@keyframes show{
+    from{
+        top: -100px;
+
+    }
+    to{
+        transform: translate(-50%, -50%);
+    }
 }
