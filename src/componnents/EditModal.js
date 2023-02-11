@@ -14,7 +14,7 @@ class EditModal extends React.Component {
                             <input type='text'value={data.title} onChange={change}></input>
                         </div>
                         <div className="btn-group">
-                            <Button text="ok" variant="primay" action={update}/>
+                            <Button text="ok" variant="primary" action={update}/>
                             <Button text="Cancel" variant="warning" action={close}/>
                         </div>
                     </div>
