@@ -4,6 +4,7 @@ import FormInput from './componnents/FormInput';
 import TodoItem from './componnents/TodoItem';
 import './App.css';
 import EditModal from './componnents/EditModal';
+import DeleteModal from './componnents/DeleteModal';
 
 class App extends React.Component {
   state = {
@@ -102,7 +103,9 @@ class App extends React.Component {
           <FormInput add={this.addTask} />
         </div>
         <EditModal edit={this.state.isEdit} close={this.closeModal} change={this.setTitle} data={this.state.editData} update={this.update} />
+        <DeleteModal/>
       </div>
+      
     );
 
   }
