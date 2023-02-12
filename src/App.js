@@ -23,27 +23,25 @@ class App extends React.Component {
       id: "",
       title: ""
     },
-    isDelete :false
+    isDelete: false
 
   }
 
-  
-  openDelete = (id, data) =>{
+
+  openDelete = (id, data) => {
     this.setState({
-      isDelete :true,
-      DeleteData:{
+      isDelete: true,
+      DeleteData: {
         id,
-        title :data
+        title: data
       }
     })
   }
-
-  closeDelete = (id, data) =>{
+  closeDelete = () => {
     this.setState({
-      isDelete :false
+      isDelete: false
     })
   }
-
   setTitle = e => {
     this.setState({
       editData: {
@@ -52,7 +50,7 @@ class App extends React.Component {
       }
     })
   }
-  
+
   openModal = (id, data) => {
     this.setState({
       isEdit: true,
@@ -112,7 +110,7 @@ class App extends React.Component {
           {todos.map(item =>
             <TodoItem
               todo={item}
-              del={this.DeleteTask}
+              del={this.openDelete}
               open={this.openModal}
             />
           )}
@@ -121,15 +119,23 @@ class App extends React.Component {
           <FormInput add={this.addTask} />
         </div>
 
-        <EditModal 
-        edit={this.state.isEdit} 
-        close={this.closeModal} 
-        change={this.setTitle} 
-        data={this.state.editData} 
-        update={this.update} 
+        <EditModal
+          edit={this.state.isEdit}
+          close={this.closeModal}
+          change={this.setTitle}
+          data={this.state.editData}
+          update={this.update}
         />
-
-        <DeleteModal delete={this.state.isDelete}/>
+        <div>
+          {todos.map(item =>
+            <DeleteModal
+            todo={item}
+              delete={this.state.isDelete}
+              close={this.closeDelete}
+              del={this.DeleteTask}
+            />
+          )}
+        </div>
       </div>
 
     );
