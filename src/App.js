@@ -18,64 +18,64 @@ class App extends React.Component {
       }
     ],
     isEdit: false,
-    editData:{
-      id:"",
-      title :""
+    editData: {
+      id: "",
+      title: ""
     }
   }
 
-  setTitle = e =>{
+  setTitle = e => {
     this.setState({
-      editData:{
+      editData: {
         ...this.state.editData,
-        title : e.target.value
+        title: e.target.value
       }
     })
   }
 
-  openModal = (id, data) =>{
+  openModal = (id, data) => {
     this.setState({
-      isEdit :true,
-      editData :{
+      isEdit: true,
+      editData: {
         id,
-        title : data,
+        title: data,
       }
     })
   }
 
-  closeModal = () =>{
+  closeModal = () => {
     this.setState({
-      isEdit :false
+      isEdit: false
     })
   }
 
-  DeleteTask = id =>{
+  DeleteTask = id => {
     this.setState({
-      todos :this.state.todos.filter(item => item.id !== id)
+      todos: this.state.todos.filter(item => item.id !== id)
     })
   }
-  addTask =data =>{
-    const id =this.state.todos.length;
+  addTask = data => {
+    const id = this.state.todos.length;
     const newData = {
-      id : id+1,
-      title : data
+      id: id + 1,
+      title: data
     }
     this.setState({
-      todos:[...this.state.todos, newData]
+      todos: [...this.state.todos, newData]
     })
   }
 
-  update = ()=>{
-    const{id, title} = this.state.editData;
-    const newData = {id, title}
+  update = () => {
+    const { id, title } = this.state.editData;
+    const newData = { id, title }
     const newTodos = this.state.todos;
-    newTodos.splice((id-1),1, newData)
+    newTodos.splice((id - 1), 1, newData)
     this.setState({
-      todos :newTodos,
-      isEdit : false,
-      editData:{
-        id : "",
-        title : ""
+      todos: newTodos,
+      isEdit: false,
+      editData: {
+        id: "",
+        title: ""
       }
     })
   }
@@ -89,19 +89,19 @@ class App extends React.Component {
         </div>
         <div className='list'>
           {todos.map(item =>
-            <TodoItem 
-            key = {item.id} 
-            todo = {item}
-            del = {this.DeleteTask}
-            open = {this.openModal}
+            <TodoItem
+              key={item.id}
+              todo={item}
+              del={this.DeleteTask}
+              open={this.openModal}
             />
           )}
 
         </div>
         <div className='input-form'>
-          <FormInput add = {this.addTask}/>
+          <FormInput add={this.addTask} />
         </div>
-        <EditModal edit = {this.state.isEdit} close={this.closeModal} change ={this.setTitle} data ={this.state.editData} update = {this.update}/>
+        <EditModal edit={this.state.isEdit} close={this.closeModal} change={this.setTitle} data={this.state.editData} update={this.update} />
       </div>
     );
 
