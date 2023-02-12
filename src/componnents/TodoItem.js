@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "./Button"
-import propTypes from "prop-types"
+import Button from "./Button";
+import propTypes from "prop-types";
 
 const TodoItem = ({ todo, del, open }) => {
     const delById = id => {

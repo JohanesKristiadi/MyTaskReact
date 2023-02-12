@@ -22,7 +22,26 @@ class App extends React.Component {
     editData: {
       id: "",
       title: ""
-    }
+    },
+    isDelete :false
+
+  }
+
+  
+  openDelete = (id, data) =>{
+    this.setState({
+      isDelete :true,
+      DeleteData:{
+        id,
+        title :data
+      }
+    })
+  }
+
+  closeDelete = (id, data) =>{
+    this.setState({
+      isDelete :false
+    })
   }
 
   setTitle = e => {
@@ -33,7 +52,7 @@ class App extends React.Component {
       }
     })
   }
-
+  
   openModal = (id, data) => {
     this.setState({
       isEdit: true,
@@ -55,6 +74,7 @@ class App extends React.Component {
       todos: this.state.todos.filter(item => item.id !== id)
     })
   }
+
   addTask = data => {
     const id = this.state.todos.length;
     const newData = {
@@ -91,21 +111,27 @@ class App extends React.Component {
         <div className='list'>
           {todos.map(item =>
             <TodoItem
-              key={item.id}
               todo={item}
               del={this.DeleteTask}
               open={this.openModal}
             />
           )}
-
         </div>
         <div className='input-form'>
           <FormInput add={this.addTask} />
         </div>
-        <EditModal edit={this.state.isEdit} close={this.closeModal} change={this.setTitle} data={this.state.editData} update={this.update} />
-        <DeleteModal/>
+
+        <EditModal 
+        edit={this.state.isEdit} 
+        close={this.closeModal} 
+        change={this.setTitle} 
+        data={this.state.editData} 
+        update={this.update} 
+        />
+
+        <DeleteModal delete={this.state.isDelete}/>
       </div>
-      
+
     );
 
   }
