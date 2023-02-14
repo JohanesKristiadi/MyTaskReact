@@ -27,6 +27,11 @@ class App extends React.Component {
 
   }
 
+  DeleteTask = id => {
+    this.setState({
+      todos: this.state.todos.filter(item => item.id !== id)
+    })
+  }
 
   openDelete = (id, data) => {
     this.setState({
@@ -37,6 +42,7 @@ class App extends React.Component {
       }
     })
   }
+
   closeDelete = () => {
     this.setState({
       isDelete: false
@@ -67,11 +73,7 @@ class App extends React.Component {
     })
   }
 
-  DeleteTask = id => {
-    this.setState({
-      todos: this.state.todos.filter(item => item.id !== id)
-    })
-  }
+
 
   addTask = data => {
     const id = this.state.todos.length;
