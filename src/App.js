@@ -27,6 +27,8 @@ class App extends React.Component {
 
   }
 
+  // ini kan fungsi untuk detelenya? fungsi ini yang harusnya dijalankan saat diklik ok di modalnya
+  // di sini dia menerima sesuatu ya! yaitu id yang mau dihapus
   DeleteTask = id => {
     this.setState({
       todos: this.state.todos.filter(item => item.id !== id)
@@ -91,6 +93,8 @@ class App extends React.Component {
     const newData = { id, title }
     const newTodos = this.state.todos;
     newTodos.splice((id - 1), 1, newData)
+    // lihat deh, di sini setelah update berhasil, dia set ulang isEditnya jadi false loh!
+    // apakah delete juga butuh diset isDeletenya jadi false setelah selesai?
     this.setState({
       todos: newTodos,
       isEdit: false,
@@ -125,15 +129,19 @@ class App extends React.Component {
           edit={this.state.isEdit}
           close={this.closeModal}
           change={this.setTitle}
-          data={this.state.editData}
+          data={this.state.x}
           update={this.update}
         />
         <div>
           {todos.map(item =>
             <DeleteModal
-            todo={item}
+              // di sini, dia sudah mengirimkan todo sebagai props ke delete modal
+              // berarti, dia menerima todo.id dan todo.title loh!
+              todo={item}
               delete={this.state.isDelete}
               close={this.closeDelete}
+              // nah ini kan benar sudah dikirimkan ke modalnya fungsi utk delete task, berarti kalau dikirimkan, dia akan menjadi props ya
+              // di deletemodalnya harus dipanggil sebagai props
               del={this.DeleteTask}
             />
           )}
