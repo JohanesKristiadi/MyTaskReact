@@ -27,9 +27,10 @@ class App extends React.Component {
 
   }
 
-  DeleteTask = () => {
+  DeleteTask = (id) => {
     this.setState({
-      todos: this.state.todos.filter(item => item.id !== this.state.todos.id)
+      todos: this.state.todos.filter(item => item.id !== id),
+      isDelete : false
     })
   }
 

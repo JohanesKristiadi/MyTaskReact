@@ -8,7 +8,7 @@ function DeleteModal(props) {
             <div className="modal-container">
                 <div className="modal-box">
                     <h3>Apakah Anda Ingin menghapus data??</h3>
-                    <Button text="Iya" variant="success" action={() => { this.props.del(this.props.todo.id) }} />
+                    <Button text="Iya" variant="success" action={() => props.del(props.todo.id)} />
                     <Button text="Tidak Jadi" variant="warning" action={props.close} />
                 </div>
             </div>
