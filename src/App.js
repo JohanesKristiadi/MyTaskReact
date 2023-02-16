@@ -27,9 +27,9 @@ class App extends React.Component {
 
   }
 
-  DeleteTask = id => {
+  DeleteTask = () => {
     this.setState({
-      todos: this.state.todos.filter(item => item.id !== id)
+      todos: this.state.todos.filter(item => item.id !== this.state.todos.id)
     })
   }
 
@@ -131,7 +131,7 @@ class App extends React.Component {
         <div>
           {todos.map(item =>
             <DeleteModal
-            todo={item}
+              todo={item}
               delete={this.state.isDelete}
               close={this.closeDelete}
               del={this.DeleteTask}
