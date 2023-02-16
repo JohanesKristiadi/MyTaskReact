@@ -129,7 +129,7 @@ class App extends React.Component {
           edit={this.state.isEdit}
           close={this.closeModal}
           change={this.setTitle}
-          data={this.state.x}
+          data={this.state.editData}
           update={this.update}
         />
         <div>
